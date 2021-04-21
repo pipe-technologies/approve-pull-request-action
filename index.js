@@ -13,11 +13,15 @@ const main = async () => {
     return;
   }
 
+  console.log(pullRequest);
+
   const labels = pullRequest.labels.map(label => label.name);
   if (!labels.includes(approveLabel)) {
     console.log("PR does not include approve-label, exiting");
     return;
   }
+
+  console.log(labels);
 
   const octokit = new GitHub(token);
 
