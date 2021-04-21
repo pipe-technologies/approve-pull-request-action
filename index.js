@@ -9,19 +9,19 @@ const main = async () => {
 
   const pullRequest = context.payload.pull_request;
   if (!pullRequest) {
-    console.log("Could not get pull request from context, exiting");
+    core.info("Could not get pull request from context, exiting");
     return;
   }
 
-  console.log(pullRequest);
+  core.info(pullRequest);
 
   const labels = pullRequest.labels.map(label => label.name);
   if (!labels.includes(approveLabel)) {
-    console.log("PR does not include approve-label, exiting");
+    core.info("PR does not include approve-label, exiting");
     return;
   }
 
-  console.log(labels);
+  core.info(labels);
 
   const octokit = new GitHub(token);
 
