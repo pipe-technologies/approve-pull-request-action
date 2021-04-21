@@ -1,13 +1,13 @@
 'use strict';
 
 const core = require('@actions/core');
-const github = require('@actions/github');
+const { GitHub, context } = require('@actions/github');
 
 const main = async () => {
   const token = core.getInput('github-token');
   const approveLabel = core.getInput('approve-label');
 
-  const pullRequest = github.context.payload.pull_request;
+  const pullRequest = context.payload.pull_request;
   if (!pullRequest) {
     core.warn("Could not get pull request from context, exiting");
     return;
@@ -19,7 +19,7 @@ const main = async () => {
     return;
   }
 
-  const octokit = github.getOctokit(token);
+  const octokit = new GitHub(token);
 
   await octokit.pulls.createReview({
     ...context.repo,

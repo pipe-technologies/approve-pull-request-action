@@ -24523,13 +24523,13 @@ var __webpack_exports__ = {};
 
 
 const core = __nccwpck_require__(2186);
-const github = __nccwpck_require__(5438);
+const { GitHub, context } = __nccwpck_require__(5438);
 
 const main = async () => {
   const token = core.getInput('github-token');
   const approveLabel = core.getInput('approve-label');
 
-  const pullRequest = github.context.payload.pull_request;
+  const pullRequest = context.payload.pull_request;
   if (!pullRequest) {
     core.warn("Could not get pull request from context, exiting");
     return;
@@ -24541,7 +24541,7 @@ const main = async () => {
     return;
   }
 
-  const octokit = github.getOctokit(token);
+  const octokit = new GitHub(token);
 
   await octokit.pulls.createReview({
     ...context.repo,
