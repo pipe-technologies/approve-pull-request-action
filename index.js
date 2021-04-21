@@ -9,19 +9,19 @@ const main = async () => {
 
   const pullRequest = github.context.payload.pull_request;
   if (!pullRequest) {
-    console.log("Could not get pull request from context, exiting");
+    core.warn("Could not get pull request from context, exiting");
     return;
   }
 
-  console.log(pullRequest);
+  core.warn(pullRequest);
 
   const labels = pullRequest.labels.map(label => label.name);
   if (!labels.includes(approveLabel)) {
-    console.log("PR does not include approve-label, exiting");
+    core.warn("PR does not include approve-label, exiting");
     return;
   }
 
-  console.log(labels);
+  core.warn(labels);
 
   const octokit = github.getOctokit(token);
 
