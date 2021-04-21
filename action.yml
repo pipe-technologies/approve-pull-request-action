@@ -9,7 +9,7 @@ inputs:
     description: 'GitHub Token'
     required: true
   approve-label:
-    description: 'Label to Auto-approve For'
+    description: 'Label to Auto-approve PRs for'
     required: true
 runs:
   using: 'node12'
