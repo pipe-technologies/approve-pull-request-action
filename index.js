@@ -13,15 +13,11 @@ const main = async () => {
     return;
   }
 
-  core.warn(pullRequest);
-
   const labels = pullRequest.labels.map(label => label.name);
   if (!labels.includes(approveLabel)) {
     core.warn("PR does not include approve-label, exiting");
     return;
   }
-
-  core.warn(labels);
 
   const octokit = github.getOctokit(token);
 
