@@ -7,10 +7,10 @@ A GitHub Action for approving pull requests.
 ```yaml
 steps:
   - name: Approve Pull Request
-    uses: juliangruber/approve-pull-request-action@v1
+    uses: pipe-technologies/approve-pull-request-action@master 
     with:
       github-token: ${{ secrets.GITHUB_TOKEN }}
-      number: 1
+      approve-label: bypass
 ```
 
 ## Related
