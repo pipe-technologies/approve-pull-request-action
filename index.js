@@ -1,7 +1,8 @@
 'use strict'
 
 const core = require('@actions/core')
-const { GitHub, context } = require('@actions/github')
+const { context } = require('@actions/github')
+const { Octokit } = require("@octokit/rest")  // Updated import statement
 
 const main = async () => {
   const token = core.getInput('github-token')
@@ -19,7 +20,7 @@ const main = async () => {
     return
   }
 
-  const octokit = new GitHub(token)
+  const octokit = new Octokit({ auth: token })
 
   await octokit.pulls.createReview({
     ...context.repo,
