@@ -20,7 +20,7 @@
     "@actions/github": "^6.0.0"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.28.3",
+    "@vercel/ncc": "^0.38.1",
     "np": "^10.0.5",
     "prettier-standard": "^15.0.1",
     "standard": "^14.3.1"
