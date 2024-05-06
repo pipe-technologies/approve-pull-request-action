@@ -2,7 +2,7 @@
 
 const core = require('@actions/core')
 const { context } = require('@actions/github')
-const { Octokit } = require("@octokit/rest")  // Updated import statement
+const { Octokit } = require("@octokit/rest")
 
 const main = async () => {
   const token = core.getInput('github-token')
